@@ -1,0 +1,24 @@
+<div class="column_right_grid downloading_uploading">
+	<ul>
+	    <li>                              
+            <div class="progress">
+              <div class="progress-bar" style="width:81%"> </div>
+            </div>
+            <div class="clearfix">
+                <p class="downloading"> <i><img src="web/images/download.png" alt="" /></i> Downloading...</p>
+                <p class="percentage">81<em>%</em></p>
+                <div class="clear"></div>
+            </div>
+        </li>
+        <li>                              
+            <div class="progress">
+              <div class="progress-bar uploading" style="width:43%"> </div>
+            </div>
+            <div class="clearfix">
+                <p class="downloading"><i><img src="web/images/upload.png" alt="" /></i> Uploading...</p>
+                <p class="percentage">43<em>%</em></p>
+                <div class="clear"></div>
+        	</div>
+    	</li>
+	</ul>
+</div>

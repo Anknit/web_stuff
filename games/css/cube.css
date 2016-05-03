@@ -1,0 +1,84 @@
+@CHARSET "ISO-8859-1";
+.cube_s{
+	width:150px;
+	height:150px;
+	position:absolute;
+	backface-visibility:visible;
+}
+.wh{
+	background-color:white;
+}
+.re{
+	background-color:red;
+}
+.bl{
+	background-color:blue;
+}
+.ye{
+	background-color:yellow;
+}
+.or{
+	background-color:orange;
+}
+.gr{
+	background-color:green;
+}
+.wrap {
+	perspective: 800px;
+	perspective-origin: 50% 100px;
+	cursor:pointer;
+}
+
+@-webkit-keyframes rotateCube {
+    from   	{	transform: rotate3d(20,15,2,40deg);}
+    to		{	transform: rotate3d(20,15,2,399deg);}
+}
+
+@keyframes rotateCube {
+    from   	{	transform: rotate3d(20,15,2,40deg);}
+    to		{	transform: rotate3d(20,15,2,399deg);}
+}
+
+.a_cube{
+	position: absolute;
+	top: 150px;
+	left: 250px;
+	transform-style: preserve-3d;
+	transform-origin: 75px 75px 0px;
+	transition: all 2s;
+}
+
+.rotateCube{
+	transform: rotate3d(20,15,2,40deg);
+	animation:rotateCube 10s linear infinite;
+	-webkit-animation:rotateCube 10s linear infinite;
+	-moz-animation:rotateCube 10s linear infinite;
+}
+.cube_block{
+	width:50px;
+	height:50px;
+	border:2px solid black;
+	float:left;
+}
+.s_t{
+  transform: rotateX(90deg);
+  top: -75px;
+}
+.s_b{
+	transform: rotateX(180deg) translateZ(75px);
+}
+.s_l{
+  transform: rotateY(90deg);
+  left: -75px;
+}
+.s_f{
+	transform: translateZ(75px);
+}
+.s_r{
+  transform: rotateY(-90deg);
+  left: 75px;
+}
+.s_d{
+  transform: rotateX(-90deg);
+  top: 75px;
+}

@@ -1,0 +1,27 @@
+<div>
+    <div class="panel-group" id="schoolListContainer" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" data-ng-repeat="school in schools">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a href="#/schools/{{school.stateName}}/{{school.schoolId}}" role="link">
+                        {{school.schoolName}}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_{{$index}}" class="" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <blockquote>
+                        <small>
+                            {{school.address}}<br/>
+                            Affiliation ID: {{school.affiliationNum}}<br/>
+                            Email: {{school.email}}<br/>
+                            Website: <a href="{{school.website}}">{{school.website}}</a><br/>
+                            Pincode: {{school.pincode}}<br/>
+                            Phone Office: {{school.phoneOffice}}<br/>
+                        </small>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

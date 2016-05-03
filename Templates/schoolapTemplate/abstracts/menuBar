@@ -1,0 +1,11 @@
+<div class="menu">
+	<a class="toggleMenu" href="#"><img src="web/images/nav.png" alt="" /></a>
+		<ul class="nav">
+			<li><a href="#"><i><img src="web/images/settings.png" alt="" /></i>Settings</a></li>
+			<li class="active"><a href="#"><i><img src="web/images/user.png" alt="" /></i>Account</a></li>
+			<li><a href="#"><i><img src="web/images/mail.png" alt="" /></i>Messages <span class="messages">5</span></a></li>
+			<li><a href="#"><i><img src="web/images/favourite.png" alt="" /></i>Favorites</a></li>
+	    </ul>
+	<div class="clear"></div>
+	<script type="text/javascript" src="web/js/responsive-nav.js"></script>
+</div>

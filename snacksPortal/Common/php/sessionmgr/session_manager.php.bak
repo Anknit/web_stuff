@@ -1,0 +1,158 @@
+<?php
+/*
+ * @return session id  
+ * 2.Mandatory: Include db config and db file before includeing this file
+ * 3.Mandatory: INclude sso config file  before including this file 
+ */
+//require_once __DIR__.'./../../php/OperateDB/DbConfig.php';
+//require_once __DIR__.'./../../php/sso/php/session_manager_config.php';
+require_once __DIR__.'/session_log.php';
+//require_once __DIR__.'./../../Corona/definitions.php';
+
+function start_new_session()
+{
+	global $sso_session_name;
+	$user_session_name	=	$sso_session_name;
+	session_name($user_session_name);
+	session_set_cookie_params(31104000,"/");
+	session_start();
+}
+
+function verify_session()
+{
+	/* 1. anonymous==>fake
+	 *
+	 */
+	if( (isset($_SESSION['is_login'])) && $_SESSION['is_login']==1)
+	{
+		return 1;				
+	}
+	else
+	{
+		return 0;
+	}
+	
+	if( $_SESSION['is_login']==1 )
+	{
+		echo "welcome login user";
+		return session_id();
+	}
+	
+	/*
+	 * 1. anonymous==>anonymous and not login
+	 */
+	
+	if($_SESSION['anonymous']==1)
+	{
+		echo "welcome anonymous user";
+		return session_id();
+	}
+	
+	
+	/*
+	 * 1.verified user ==> check only is_login 
+	 */
+	/*
+	 * 
+	if( (isset($_SESSION['is_login'])) && $_SESSION['is_login']==1 )
+	{
+		return session_id();
+	}
+	*/
+	/*
+	else if(!isset($_SESSION['is_login']))
+	{ 
+		session_regenerate_id();
+		$_SESSION['is_login']=1;
+		return session_id();
+	}*/
+	
+}
+
+
+/*function start_child_session($sessionid,$child_data)
+{
+	$data=$sessionid.$child_data;
+	setcookie("vtc",$data,time(),"/","/",0,TRUE);
+}
+*/
+
+function close_session()
+{
+	if(isset($_SESSION['is_login']))
+	{
+		$_SESSION['is_login']=0;
+	}
+	if(isset($_SESSION['anonymous']))
+	{
+		$_SESSION['anonymous']=0;
+	}
+	
+	$d_data    =    array('Table'=>'session_log','Fields'=>array('session_status'=>0),'clause'=>"sessionid='".session_id()."'");
+	DB_Update($d_data);
+	
+	session_unset();
+	session_destroy();
+	return true;
+}
+
+function set_session_data($data)
+{
+	$keys=array_keys($data);
+	$count=count($keys);
+	for($i=0;$i<$count;$i++)
+	{
+		$_SESSION[$keys[$i]]=$data[$keys[$i]];
+	}
+	
+	
+	/*if (($uid!="")&&($uid!=NULL)&&($uid!=FALSE))
+	{
+		if (($anonymous==0) || ($anonymous==NULL) || ($anonymous==""))
+		{
+			$_SESSION['uid']=$uid;
+			$_SESSION['is_login']=$is_login;
+			$_SESSION['anonymous']=0;
+		}
+
+	}
+	else 
+	{
+		$_SESSION['uid']="";
+		$_SESSION['is_login']="";
+		$SESSION['anonymous']=1;
+	}
+	*/
+}
+
+
+/*
+$a=start_new_session();
+close_session();
+echo $a;
+start_child_session("aaa","eeere");
+if(isset($_SESSION))
+echo "ggod";
+else 
+echo "bad";
+
+
+*/
+start_new_session();
+log_the_session();
+if(!isset($_SESSION['anonymous']))
+{
+	$_SESSION['anonymous']=1;
+}
+//if session setup_root is not set, then set its value
+if(!isset($_SESSION['SETUP_ROOT'])){	
+	$_SESSION['SETUP_ROOT'] = $GLOBALS['sso_setup_root']; 
+}
+//if session HTTP_ROOT is not set, then set its value
+if(!isset($_SESSION['HTTP_ROOT'])){	
+	$_SESSION['HTTP_ROOT'] = $GLOBALS['sso_http_root'];//strstr(str_replace(basename(__FILE__), "", "http".(!empty($_SERVER['HTTPS'])?"s":"")."://".$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['SCRIPT_NAME']), '/widget_factory', true);
+}
+//if session HTTP_ROOT is not set, then set its value
+if(!isset($_SESSION['SERVER_ROOT'])){	
+	$_SESSION['SERVER_ROOT'] = "http".(!empty($_SERVER['HTTPS'])?"s":"")."://".$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+}

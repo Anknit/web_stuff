@@ -1,0 +1,11 @@
+Steps to set custom page for page not found error(404)
+1. Open /etc/apache2/httpd.conf file
+Add this line: ErrorDocument 404 /path_to_file_where_you_want_to_redirect (this file path will be relative to the doc root)
+2. In this file set header location of another file if you want to redirect
+
+For ex.
+in httpd.conf:
+ErrorDocument 404 /index.php
+
+in index.php:
+header('Location: workdir/index.php');

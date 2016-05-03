@@ -1,0 +1,147 @@
+<div class='col-md-3 visible-md-block visible-lg-block'>
+	<div data-ng-controller="leftPaneController">
+		<ul class='left-panel-list list-group'>
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">School Search</div>
+					<div class="panel-body">
+						<form role="search">
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
+									<option value="" data-ng-selected>Select State</option>
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select class="form-control" data-ng-change="getCityLocation()" data-ng-model="schoolSearchCity">
+									<option value="" data-ng-selected>Select City</option>
+                                    <option data-ng-repeat="city in cities" value="{{city.cityId}}">{{city.cityName}}</option> 
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-screenshot'></span>
+					        	</div>
+					        	<select class="form-control" data-ng-change="getStateSchool()" data-ng-model="schoolSearchLocation">
+									<option value="" data-ng-selected>Select Location</option>
+                                    <option data-ng-repeat="location in locations" value="{{location.locationId}}">{{location.locationName}}</option> 
+					        	</select>
+					        </div>
+						</form>
+					</div>
+				</div>
+			</li>
+<!--
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">Upcoming Events</div>
+					<div class="panel-body">
+						<form role="search">
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
+									<option value="0">Select State</option>
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select class="form-control">
+									<option selected="selected">Select City</option>
+					        	</select>
+					        </div>
+						</form>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">School Ranking</div>
+					<div class="panel-body">
+						<form role="search">
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
+									<option value="0">Select State</option>
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select class="form-control">
+									<option selected="selected">Select City</option>
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-filter'></span>
+					        	</div>
+					        	<select class="form-control">
+									<option selected="selected">Select Criteria</option>
+					        	</select>
+					        </div>
+					        <div class="input-group center-block">
+					        	<button class='btn btn-primary btn-block center-block'>Search</button>
+					        </div>
+						</form>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">View Result</div>
+					<div class="panel-body">
+						<form role="search">
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select class="form-control">
+									<option selected="selected">Select City</option>
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-education'></span>
+					        	</div>
+					        	<select class="form-control">
+									<option selected="selected">Select School</option>
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-screenshot'></span>
+					        	</div>
+					        	<input type="text" class='form-control' placeholder='Class' />
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-screenshot'></span>
+					        	</div>
+					        	<input type="text" class='form-control' placeholder='Roll No' />
+					        </div>
+					        <div class="input-group center-block">
+					        	<button class='btn btn-primary btn-block center-block'>Search</button>
+					        </div>
+						</form>
+					</div>
+				</div>
+			</li>
+-->
+		</ul>
+	</div>
+</div>

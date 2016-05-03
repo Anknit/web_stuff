@@ -1,0 +1,13 @@
+digraph "C:/wamp/www" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2b9e166508d09dde5a99a7da5cdd2c5e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="wamp" fontname="Helvetica", fontsize="10", URL="dir_2b9e166508d09dde5a99a7da5cdd2c5e.html"]
+  subgraph clusterdir_6cec9c0059ae9a8bc4877b04f6d117b9 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_6cec9c0059ae9a8bc4877b04f6d117b9.html"];
+    dir_6cec9c0059ae9a8bc4877b04f6d117b9 [shape=plaintext label="www"];
+    dir_ac07840a994d8fbc22467e4a588b5fea [shape=box label="yuidoc" color="red" fillcolor="white" style="filled" URL="dir_ac07840a994d8fbc22467e4a588b5fea.html"];
+  }
+  }
+}

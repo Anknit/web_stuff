@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./TestWork/jquery.js"></script>
+<style>
+html,body{
+font-family: comic sans ms;
+font-size:14px;
+margin:0px;
+}
+h3{
+text-align:center;
+text-decoration:underline;
+}
+img{
+cursor:pointer;
+}
+.çontainer{
+margin:auto;
+width:70%;
+}
+.taskInput{
+outline:none;
+border:none;
+}
+#tasks li{
+border: 1px solid #eee;
+margin:5px;
+padding: 5px;
+border-radius:5px;
+min-height:18px;
+cursor: text;
+}
+#tasks{
+padding-top:5px;
+padding-bottom:5px;
+padding-left:5px;
+outline:none;
+border:3px solid green;
+list-style-type: none;
+border-radius:5px;
+max-height:400px;
+overflow:auto;
+}
+.completed{
+color:green !important; 
+}
+/*.completed:after{
+margin-left:15px;
+content: attr(comTime);
+color:#888;
+}*/
+.taskentry:after{
+margin-left:40px;
+content: attr(strTime);
+color:#888;
+font-size:10px;
+}
+[contenteditable=true] >li[placeholder]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  color: #ccc;
+  font-style: italic;
+}
+.footer{
+position:fixed;
+bottom:0px;
+background: #000000;
+color: #ffffff;
+margin: auto;
+width:100%;
+padding: 0px;
+}
+.taskentry{
+color:blue;
+}
+.actimg{
+width:16px;
+height:16px;
+display:none;
+margin: 0px 2px;
+}
+#TaskCounter{
+position:relative;
+margin:auto;
+width:15%;
+top:30px;
+min-height:60px;
+max-height:120px;
+background:#54A20E;
+color:#e0e0e0;
+padding:10px;
+border-radius:20px;
+}
+#remainingTask{
+color:#ffffff;
+font-size:32px;
+font-family:Arial;
+}
+</style>
+</head>
+<body>
+<h3>My Tasks</h3>
+<div class=çontainer>
+<ul id='tasks' contenteditable='true'>
+<li placeholder='Add your task Here'></li>
+</ul>
+</div>
+<div id='TaskCounter' align='center'> You have <br/><span id='remainingTask'></span><br/> tasks pending.</div>
+<div class='footer' align='center'>Developed By :- Ankit Agarwal :)</div>
+<script>
+var db;
+var request;
+var transaction;
+var objectStore;
+$(function(){
+	window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+    if(!window.indexedDB){
+        console.log("Your Browser does not support IndexedDB");
+    }
+    else{
+        request = window.indexedDB.open("taskDb", 1);
+        testIndexDb();
+    }
+
+	var temp='';
+	var temp2='';
+	var taskCount='';
+	var tickImg = '<img src="tick.png" title="Task completed" alt="task completed" onclick="taskcomplete(this);" class="actimg" style="opacity:0.2;float:left"/>';
+	var deleteImg = '<img src="red.png" title="Remove Task" alt="delete task" onclick="removetask(this);" class="actimg"style="float:right"/>';
+	var tasks = $('#tasks');
+	tasks.on('keypress',function(e){
+		if(e.which == 13){
+			temp = $(this).find('li')[0];
+			temp2 = $('<li>');
+			$(temp2).addClass('taskentry');
+			$(temp2).html(tickImg+$(temp).html()+deleteImg);
+			$(temp2).find('img').css('display','block');
+			$(this).append(temp2);
+			$(temp2).attr('strTime','Added @ '+new Date().toLocaleString());
+			$(temp).html('');
+			localStorage.setItem('taskEntry',tasks.html());
+			tasks.css('borderColor','green');
+			setTaskCounter();
+			temp='';
+			temp2='';
+			taskCount='';
+			e.preventDefault();
+		}
+		else{
+			tasks.css('borderColor','#F20505');
+		}
+	});
+	setTaskCounter();
+//	testIndexDb();
+});
+var taskcomplete	=	function(taskObject){
+	if($(taskObject).css('opacity') != 1){
+		$(taskObject).css('opacity','1');
+		$(taskObject).parent().attr('strTime',$(taskObject).parent().attr('strTime')+' - - - - Completed @ '+new Date().toLocaleString());
+		$(taskObject).parent().addClass('completed');
+		$(taskObject).parent().attr('contenteditable','false');
+		localStorage.setItem('taskEntry',$('#tasks').html());
+		setTaskCounter();
+	}
+}
+var removetask	=	function(taskObject){
+	$(taskObject).parent().remove();
+	localStorage.setItem('taskEntry',$('#tasks').html());
+	setTaskCounter();
+}
+var setTaskCounter	=	function(){
+	temp = $('#tasks').find('.taskentry').length;
+	temp2 = $('#tasks').find('.completed').length;
+	$('#remainingTask').html(parseInt(temp)-parseInt(temp2));
+}
+function testIndexDb(){
+    request.onerror = function(event){
+        console.log("Error opening DB", event);
+    }
+    request.onupgradeneeded   = function(event){
+        console.log("Upgrading");
+        db = event.target.result;
+        if(!db.objectStoreNames.contains("tasks")){
+            db.createObjectStore("tasks", { keyPath : "taskNo" });
+        }
+    };
+    request.onsuccess  = function(event){
+        console.log("Success opening DB");
+        db = event.target.result;
+    }
+}
+function addTask(taskNum,taskDetail){
+    transaction = db.transaction(["tasks"],"readwrite");
+    transaction.oncomplete = function(event) {
+        console.log("Success");
+    };
+    transaction.onerror = function(event) {
+        console.log("Error");
+    };  
+    objectStore = transaction.objectStore("tasks");
+    objectStore.add({taskNo: taskNum, Detail: taskDetail});
+}
+function getTask(taskNum){
+    request = db.transaction(["tasks"],"readwrite").objectStore("tasks").get(taskNum);
+    request.onsuccess = function(event){
+        console.log("Task : "+request.result.Detail);    
+    };
+}
+function updateTask(taskNum,taskDetail){
+	transaction = db.transaction(["tasks"],"readwrite");
+    objectStore = transaction.objectStore("tasks");
+    request = objectStore.get(taskNum);
+    request.onsuccess = function(event){
+        console.log("Updating : "+request.result.Detail + " to " + taskDetail);
+        request.result.Detail = taskDetail;
+        objectStore.put(request.result);
+    };
+}
+</script>
+</body>
+</html>

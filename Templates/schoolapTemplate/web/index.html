@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+	<head>
+		<title>Website Template</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="web/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+		<link href="web/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+		<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="web/js/jquery.js"></script>
+		<script type="text/javascript" src="web/js/login.js"></script>
+		<script type="text/javascript" src="web/js/Chart.js"></script>
+		<script type="text/javascript" src="web/js/jquery.easing.js"></script>
+		<script type="text/javascript" src="web/js/jquery.ulslide.js"></script>
+		<link rel="stylesheet" href="web/css/clndr.css" type="text/css" />
+		<script src="web/js/underscore-min.js"></script>
+		<script src= "web/js/moment-2.2.1.js"></script>
+		<script src="web/js/clndr.js"></script>
+		<script src="web/js/site.js"></script>
+		<style>
+			.HorizontalList li:hover .VerticalList,.VerticalList li{
+				display:block;
+			}
+			.VerticalList{
+				list-style: none;
+				padding:0px;
+				background: #11A8AB;
+				display:none;
+				position:absolute;
+				z-index:18881;
+			}
+			
+			.VerticalList li{
+				float:none;
+				cursor:pointer;
+			}		
+
+		</style>
+	</head>
+	<body>			       
+	    <div class="wrap">	 
+	      <div class="header">
+	      	  <div class="header_top">
+					  <div class="menu">
+						  <a class="toggleMenu" href="#"><img src="web/images/nav.png" alt="" /></a>
+							<ul class="nav HorizontalList">
+							<li class="active"><a href="./">Home</a></li>
+							<li><a href="./?action=school">Schools</a></li>
+							<li><a href="./?action=result">Results</a>
+								<ul class='VerticalList'>
+									<li><a href="./?action=result&class=10">Class X</a></li>
+									<li><a href="./?action=result&class=12">Class XII</a></li>
+									<li><a href="./?action=result&class=all">Internal</a></li>
+								</ul>
+							</li>
+							<li><a href="./?action=compare">Compare</a></li>
+							<li><a href="./?action=ranking">Rankings</a></li>
+							<li><a href="./?action=career">Career</a>
+								<ul class='VerticalList'>
+									<li><a href="./?action=joblist">Job Advertisements</a></li>
+									<li><a href="./?action=appStatus">Application Status</a></li>
+								</ul>
+							</li>
+						    </ul>
+							<div class="clear"></div>
+							<script type="text/javascript" src="web/js/responsive-nav.js"></script>
+				        </div>
+						<div class="clear"></div>				 
+					</div>
+				</div>	  					     
+			</div>
+	  	<div class="main">  
+	    	<div class="wrap">  		 
+
+				<div class="column_left">	          
+					<div class="social_network_likes">
+						<ul>
+							<li><a href="#" class="facebook"><i><img src="web/images/facebook_icon.png" alt=""></i> <span>248k</span></a></li>
+							<li><a href="#" class="twitter"><i><img src="web/images/tweets.png" alt=""></i> <span>30k</span></a></li>
+							<li><a href="#" class="googleplus"><i><img src="web/images/google+.png" alt=""></i> <span>124k</span></a></li>
+							<li><a href="#" class="mail"><i><img src="web/images/mail-hover.png" alt=""></i> <span>89k</span></a></li>
+							<div class="clear"></div>
+						</ul>
+			  		</div>
+	  			</div> 
+	  		
+				<div class="column_middle">
+		        	<div class="tweets">
+		            	<h3><i><img src="web/images/tweets.png" alt="" /> </i> Latest Tweets</h3>		              
+						<div class="tweets_list">
+				      		<ul>
+						  		<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore <a href="#">@Neque</a>
+						  			<span>10 minutes ago</span></li>
+						  	   <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore eiusmod <a href="#">#Creative Cloud</a>
+						  			<span>2 hours ago</span></li>
+				    		</ul>
+				      	</div>
+		          	</div>
+		          	<div class="social_networks">
+				    	<ul>
+			     			<li><a href="#" class="facebook"><i><img src="web/images/facebook_icon.png" alt="" /></i> <span>Share to Facebook</span><div class="clear"></div></a></li>
+			      			<li><a href="#" class="twitter"><i><img src="web/images/tweets.png" alt="" /></i> <span>Share to Twitter</span><div class="clear"></div></a></li>
+			      			<li><a href="#" class="googleplus"><i><img src="web/images/google+.png" alt="" /></i> <span>Share to Google+</span><div class="clear"></div></a></li>
+			    		</ul>
+					</div>	           
+				</div>
+    	    
+	            <div class="column_right">
+					<div class="column_right_grid sign-in">
+				 		<div class="sign_in">
+							<h3>Sign in to your account</h3>
+					    	<form>
+					    		<span>
+							 	    <i><img src="web/images/mail.png" alt="" /></i><input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
+							 	</span>
+							 	<span>
+									<i><img src="web/images/lock.png" alt="" /></i>
+					 	     		<input type="password" placeholder="password">
+					 	    	</span>
+					 			<input type="submit" class="my-button" value="Sign In">
+					 		</form>
+							<h4><a href="#">Forget Password?</a></h4>				   
+						</div>
+						<div class="signin_facebook">
+							<p><a href="#">  <i> <img src="web/images/facebook.png" alt="" /></i>Sign in with facebook</a></p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+			
+		</div> 
+    	<div class="copy-right">
+			<p>© 2015 Designed by Ankit Agarwal </p>
+		</div>   
+</body>
+</html>
+

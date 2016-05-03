@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Input styles</title>
+<style>
+	html, body{
+		height: 100%;
+		margin:0px;
+	}
+	body{
+		background: linear-gradient(to bottom right, #77ABA7, #BCC8A4, #D0C99B, #94794E);
+		background-repeat: no-repeat;
+		overflow: hidden;  
+	} 
+	.search_container{
+		position:absolute;
+		float: right;
+		right: 50px;
+		margin-top: 650px;
+	}
+	.entry_details_container{
+		position: absolute;
+		margin-left: 50px;
+		margin-top: 80px;
+	}
+	.card_details_container{
+		position:absolute;
+		float: right;
+		right: 305px;
+		margin-top: 80px;
+	}
+	.phone_container{
+	}
+	.operator_container{
+		margin-top:40px;
+	}
+	.amount_container{
+		margin-top:80px;
+	}
+	.add_button_container{
+		position:absolute;
+		margin-left: 50px;
+		margin-top: 200px;
+	}
+	.proceed_button_container{
+		position:absolute;
+		float: right;
+		right: 285px;
+		margin-top: 200px;
+	}
+	.card_num_container{
+	}
+	.card_exp_container{
+		margin-top:40px;
+	}
+	.card_cvv_container{
+		margin-top:80px;
+	}
+	.menu_tab_container{
+		position:absolute;
+		margin-left: 50px;
+		margin-top: 10px;
+	}
+	.payment_tab_container{
+		position: absolute;
+		float: right;
+		right: 50px;
+		margin-top: 10px;
+	}
+	.m_p_container{
+		position:absolute;
+		margin-left: 580px;
+		margin-top: 150px;
+	}
+	.u_m_i{
+		float: left;
+		width: 200px;
+		height: 20px;
+		padding: 5px;
+		font-size: 13px;
+		color: blue;
+		border:none;
+	}
+	.u_m_i:focus{
+		outline:none;
+	}
+	.mon_year_i{
+		float: left;
+		width: 60px;
+		height: 20px;
+		padding: 5px;
+		font-size: 13px;
+		color: blue;
+		border:none;
+		margin-left:5px;
+	}
+	.mon_year_i:focus{
+		outline:none;
+	}
+	.arrow_container{
+		float:left;
+		width:20px;
+		height:30px;
+		background: white;
+		cursor:pointer;
+	}
+	.inp_drop_arr{
+		cursor:pointer;
+		margin-top: 12px;
+		opacity: 0.2;
+	}
+	.inp_drop_arr:hover{
+		opacity: 1;
+	}
+	.arrow_self{
+		margin-top: 12px;
+		width:0px;
+		height:0px;
+		cursor:pointer;
+		opacity: 0.2;
+		border-top: 4px solid black;
+		border-left:4px solid transparent;
+		border-right:4px solid transparent;
+	}
+	.arrow_container:hover .arrow_self{
+		opacity: 1;
+	}
+	.forward_arrow{
+		width:0px;
+		height:0px;
+		float:left;
+		margin-top:-10px;
+		cursor:pointer;
+		opacity: 1;
+		border-left: 25px solid #4387fd;
+		border-top:25px solid transparent;
+		border-bottom:25px solid transparent;
+	}
+	.frwrd_nav{
+		float:left;
+		color: white;
+		font-family:Arial;
+		font-size:14px;
+		font-weight: bold;
+		width: 110px;
+		height: 30px;
+		cursor:pointer;
+		background: -webkit-linear-gradient(top,#4387fd,#4683ea);
+		background: -moz-linear-gradient(top,#4387fd,#4683ea);
+		background: linear-gradient(top,#4387fd,#4683ea);
+	}
+	.s_b_container{
+		width:45px;
+		height:30px;
+		cursor:pointer;
+		float:left;
+		background: -webkit-linear-gradient(top,#4387fd,#4683ea);
+		background: -moz-linear-gradient(top,#4387fd,#4683ea);
+		background: linear-gradient(top,#4387fd,#4683ea);
+	}
+	.s_b_large_container{
+		width:275px;
+		height:30px;
+		cursor:pointer;
+		float:left;
+		background: -webkit-linear-gradient(top,#4387fd,#4683ea);
+		background: -moz-linear-gradient(top,#4387fd,#4683ea);
+		background: linear-gradient(top,#4387fd,#4683ea);
+	}
+	.tab_head{
+		width:100px;
+		height:30px;
+		cursor:pointer;
+		float:left;
+		opacity:0.6;
+		margin-right: 2px;
+		background: -webkit-linear-gradient(top,#4387fd,#4683ea);
+		background: -moz-linear-gradient(top,#4387fd,#4683ea);
+		background: linear-gradient(top,#4387fd,#4683ea);
+	}
+	.tab_head:hover{
+		opacity:1;
+	}
+	.active-tab_head{
+		opacity:1;
+	}
+	.search_img{
+		margin: 0px 0px 0px 6px;
+		width:28px;
+		height:28px;
+	}
+	.phone_img{
+		margin: 4px 0px 0px 12px;
+		width:22px;
+		height:20px;
+	}
+	.curr_img{
+		margin: 4px 0px 0px 12px;
+		width:16px;
+		height:20px;
+	}
+	.but_text{
+		margin-top: 6px;
+		font-weight: bold;
+		color: white;
+		font-family: Arial;
+		font-size: 13px;
+	}
+	::-webkit-input-placeholder { /* WebKit browsers */
+	    color:    grey;
+		opacity:  0.6;
+		font-style: italic;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	    color:    grey;
+		opacity:  0.6;
+		font-style: italic;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	    color:    grey;
+		opacity:  0.6;
+		font-style: italic;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	    color:    grey;
+		opacity:  0.6;
+		font-style: italic;
+	}
+	#block_pay_options{
+		width: 570px;
+		height:500px;
+		position: absolute;
+		float:right;
+		right: 10px;
+		display:none;
+	}
+	.blocker{
+		z-index: 3;
+		background-color: transparent;
+		opacity: 0.5;
+	}
+</style>
+</head>
+<body>
+	<div class='search_container' align='right'>
+		<input class='u_m_i' type='text' id='srch' placeholder='Search Google' />
+		<div class='arrow_container' align='center'>
+			<div class='arrow_self'></div>
+		</div>
+		<div class='s_b_container'>
+			<img src='./search1.png' class='search_img'/>
+		</div>
+	</div>
+	<div class='menu_tab_container'>
+		<div class='tab_head active-tab_head' align='center'>
+			<div class='but_text'>Prepaid</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>Postpaid</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>DTH</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>Data-Card</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>Landline</div>
+		</div>
+	</div>
+	<div class='entry_details_container'>
+		<div class='phone_container'>
+			<div class='s_b_container'>
+				<img src='./phone3.png' class='phone_img'/>
+			</div>
+			<input class='u_m_i' type='text' id='mob' placeholder='Enter 10 digits mobile number'/>
+			<div class='arrow_container' align='center'>
+				<div class='arrow_self'></div>
+			</div>
+		</div>
+		<div class='operator_container'>
+			<div class='s_b_container'>
+				<img src='./operator.png' class='phone_img'/>
+			</div>
+			<input class='u_m_i' type='text' id='operator' placeholder='Select service provider'/>
+			<div class='arrow_container' align='center'>
+				<div class='arrow_self'></div>
+			</div>
+		</div>
+		<div class='amount_container'>
+			<div class='s_b_container'>
+				<img src='./INR.png' class='curr_img'/>
+			</div>
+			<input class='u_m_i' type='text' id='curr' placeholder='Enter amount'/>
+			<div class='arrow_container' align='center'>
+				<div class='arrow_self'></div>
+			</div>
+		</div>
+	</div>
+	<div class='payment_tab_container'>
+		<div class='tab_head active-tab_head' align='center'>
+			<div class='but_text'>Saved cards</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>Debit Card</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>Credit card</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>NetBanking</div>
+		</div>
+		<div class='tab_head' align='center'>
+			<div class='but_text'>IMPS</div>
+		</div>
+	</div>
+	<div class='card_details_container'>
+		<div class='card_num_container'>
+			<div class='s_b_container'>
+				<img src='./card.png' class='search_img'/>
+			</div>
+			<input class='u_m_i' type='text' id='cardNum' placeholder='Enter card number'/>
+		</div>
+		<div class='card_exp_container'>
+			<div class='s_b_container'>
+				<div class='but_text' align='center'>Expiry</div>
+			</div>
+			<input class='mon_year_i' type='text' id='cardExp_mon' placeholder='Month'/>
+			<input class='mon_year_i' type='text' id='cardExp_year' placeholder='Year'/>
+		</div>
+		<div class='card_cvv_container'>
+			<div class='s_b_container'>
+				<div class='but_text' align='center'>CVV</div>
+			</div>
+			<input class='mon_year_i' type='text' id='cvvNum' placeholder='***'/>
+		</div>
+	</div>
+	<div class='add_button_container'>
+		<div class='s_b_large_container' align='center'>
+			<div class='but_text'>Add new</div>
+		</div>
+	</div>
+	<div class='m_p_container'>
+		<div class='frwrd_nav' align='center'>
+			<div class='but_text'>Make Payment</div>
+		</div>
+		<div class='forward_arrow'></div>
+	</div>
+	<div class='proceed_button_container'>
+		<div class='s_b_large_container' align='center'>
+			<div class='but_text'>Proceed to pay</div>
+		</div>
+	</div>
+	<div class='blocker' id='block_pay_options'></div>
+</body>
+<script>
+var LookUpMenusActiveNode	=	function(src){
+	src	=	src.className;
+	src	=	document.querySelectorAll("div."+src+" > .active-tab_head")[0];
+	return src;
+};
+window.onload	=	function(){
+	var menu_tabs	=	document.getElementsByClassName('tab_head');
+	for(i=0; i< menu_tabs.length; i++){
+		menu_tabs[i].addEventListener('click',function(){
+			var activeTab	=	LookUpMenusActiveNode(this.parentElement);
+			manipulate_class(activeTab, 'replace', 'tab_head', 'tab_head active-tab_head');
+			manipulate_class(this, 'add', 'active-tab_head', '');
+		});
+	}
+};
+var manipulate_class	=	function (Element, Action, ClassName, oldClassName){
+	var temp_str		=	Element.className;
+	switch (Action) {
+	case 'add':
+		temp_str			+= 	' '+ClassName;
+		break;
+	case 'remove':
+		temp_str			=	temp_str.replace(ClassName, '');
+		break;
+	case 'replace':
+		temp_str			=	temp_str.replace(oldClassName, ClassName);
+		break;
+	}
+	Element.className	=	temp_str;
+};
+</script>
+</html>

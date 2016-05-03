@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test UI Abstraction Layer</title>
+<link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="./css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div id="myNavBar">
+		<ul>
+			<li><a href='#'>Facebook</a></li>
+			<li><a href='#'>Menu2</a></li>
+			<li>
+				<a href='#'>Menu3</a>
+				<ul>
+					<li><a href='#'>Dropdown1</a></li>
+					<li><a href='#'>Dropdown2</a></li>
+					<li><a href='#'>Dropdown3</a></li>
+					<li><a href='#'>Dropdown4</a></li>
+				</ul>
+			</li>
+			<li><a href='#'>Menu4</a></li>
+		</ul>
+	</div>
+	
+	<div id="jsonNav"></div>
+	<div id='myButton' data-button='Warning Button'></div>
+	<div class='classButton' data-button='Info Button'></div>
+	<div class='classButton' data-button='Another Button'></div>
+	
+	<div class="container">
+		<div class="col-md-10 col-md-offset-1 col-sm-12">
+			<div id="myTab">
+				<div id="Tab1" data-label="Label1">
+					<p>This is test statement</p>
+				</div>
+				<div id="Tab2" data-label="Label2">
+					<p>This is another test statement</p>
+				</div>
+				<div id="Tab3" data-label="Label3">
+					<p>This is test statement</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-md-8 col-md-offset-2" style="display:none;">
+	<ul style="list-style: none;">
+		<li>
+			<div class='row'>
+				<div class="col-md-3 col-sm-6">
+					<a href="#" class="thumbnail">
+				      <img src="./images/thumbnail1.jpg" alt="Video Thumbnail">
+				    </a>
+				</div>
+				<div class="col-md-9 col-sm-6">
+					<h3>6 Hour of The Best Beethoven - Classical Music Piano Studying Concentration Playlist Mix</h3>
+					<div class="descriptionTopicsDiv">
+						<div class="col-md-8 col-sm-12" style="border-right:1px solid #cecece;">
+							<span class="sharedByDiv">By David </span>
+							<small> (2 years ago, 69032 views)</small>
+							<p>This six hour Classical Music arrangement features some of the best piano Sonatas by Ludwig van Beethoven, the famous German composer and pianist.<span class="descritpionEnd">..</span><span class="fullDescription"><br />It's the perfect play-list for studying, relaxing, homework, video gaming, sleeping, babies, deep relaxation and meditation and some use it as elevator or hotel lobby and lounge music!</span>
+							</p>
+						</div>
+						<div class="col-md-4 col-sm-12">
+							<strong>Topics</strong>
+							<ul class="topicsDivUl" style="list-style: disc;">
+								<li>
+									<div class="topicsDivLi"><!--
+										<div class="caretImageDiv">
+											<img src="image/right-caret.gif" alt="leftCaret">
+										</div>
+										--><span class="timeLine">00:00:00</span>
+										<a href="#">Understanding Violin</a>
+									</div>
+								</li>
+								<li>
+									<span class="timeLine">00:05:30</span>
+									<a href="#">Tuning your instrument</a>
+								</li>
+								<li>
+									<span class="timeLine">00:10:53</span>
+									<a href="#">How to hold the instrument</a>
+								</li>
+								<li class="hiddenList">
+									<span class="timeLine timeLineNew">00:17:08</span>
+									<a href="#">Playing your first note</a>
+								</li>
+								<li class="hiddenList">
+									<span class="timeLine timeLineNew">00:23:10</span>
+									<a href="#">Playing all octaves</a>
+								</li>
+							</ul>
+						</div>
+						<div class="moreBackDiv"><span class="moreDiv" onclick="expandDiv(event);">more</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class='media'>
+				<div class="media-left media-middle">
+					<a href="#">
+				      <img src="./images/thumbnail1.jpg" class="media-object" alt="Video Thumbnail" width="180px">
+				    </a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">Introduction to Violin playing: Understanding the instrument and playing all octaves in 30 minutes</h4>
+					<div class="descriptionTopicsDiv small row">
+						<div class="col-md-7 col-sm-12" style="border-right:1px solid #cecece;">
+							<span class="sharedByDiv">By David </span>
+							<small> (2 years ago, 69032 views)</small>
+							<p>This six hour Classical Music arrangement features some of the best piano Sonatas by Ludwig van Beethoven, the famous German composer and pianist.<span class="descritpionEnd">..</span><span class="fullDescription" style="display:none"><br />It's the perfect play-list for studying, relaxing, homework, video gaming, sleeping, babies, deep relaxation and meditation and some use it as elevator or hotel lobby and lounge music!</span>
+							</p>
+						</div>
+						<div class="col-md-5 col-sm-12">
+							<strong>Topics</strong>
+							<ul class="topicsDivUl" style="list-style: disc;">
+								<li>
+									<span class="timeLine">00:00:00</span>
+									<a href="#">Understanding Violin</a>
+								</li>
+								<li>
+									<span class="timeLine">00:05:30</span>
+									<a href="#">Tuning your instrument</a>
+								</li>
+								<li>
+									<span class="timeLine">00:10:53</span>
+									<a href="#">How to hold the instrument</a>
+								</li>
+								<li class="hiddenList">
+									<span class="timeLine timeLineNew">00:17:08</span>
+									<a href="#">Playing your first note</a>
+								</li>
+								<li class="hiddenList">
+									<span class="timeLine timeLineNew">00:23:10</span>
+									<a href="#">Playing all octaves</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-md-offset-5 text-center" onclick="expandDiv(event);" style="border-style:solid;border-width:1px 1px 0px 1px; ">more</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class='row'>
+				<div class="col-md-3 col-sm-6">
+					<a href="#" class="thumbnail">
+				      <img src="./images/thumbnail1.jpg" alt="Video Thumbnail">
+				    </a>
+				</div>
+				<div class="col-md-9 col-sm-6">
+				</div>
+			</div>
+		</li>
+	</ul>
+	</div>
+	<div id="myModal">
+	</div>
+	
+	<button class="btn" data-my="Lets give a Tooltip" title='<div>priority <br/>tooltip</div>'>Tooltip button</button>
+	
+	
+	<form>
+	<div id="myTextBox" data-label="Name" data-placeholder="Empty email address"></div>
+	<div id="checkBox1" data-label="Please check"></div>
+	<div id="Radio1" name="rg1" data-label="Radio button 1" checked></div>
+	<div id="Radio2" name="rg1" data-label="Radio button 2"></div>
+	<span id='ms'><div><p>Hello</p></div></span>
+	<div id="blockingDiv"></div>
+	</form>
+	
+	<div id="dynamictable"></div>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./UImethods.js"></script>
+	<script src="./testUI.js"></script>
+</body>
+</html>

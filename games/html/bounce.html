@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<style>
+			#ball{
+				position: absolute;
+				top:20px;
+				left:50px;
+				width:3px;
+				height:3px;
+				background-color: blue;
+			}
+		</style>
+		<script>
+			onload = function(){
+				moveBall();
+			}
+			function moveBall(){
+				var ball = document.getElementById('ball');
+				ball.style.top = (parseInt(ball.style.top)+50)+'px';
+				ball.style.left = (parseInt(ball.style.left)+50)+'px';
+			}
+		</script>
+	</head>
+		<body>
+			<div id='ball'></div>
+		</body>
+</html>

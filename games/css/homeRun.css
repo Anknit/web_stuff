@@ -1,0 +1,113 @@
+@CHARSET "ISO-8859-1";
+.UserInfoDisplay {
+  float: left;
+  width: 100%;
+  height: 120px;
+}
+.GamePlay{
+  float: left;
+  width: 100%;
+  height:450px;
+}
+.playerSection{
+  width: 15%;
+  float: left;
+  height: 100%;
+}
+.GlobalControlSection {
+  float: left;
+  width: 100%;
+  height: 80px;
+}	
+.dice{
+	position: absolute;
+	transform-style: preserve-3d;
+	transform-origin: 25px 25px 0px;
+	transition: all 1s;
+	border:1px solid black;
+	text-align: center;
+	font-size: 25px;
+}
+.dice > .cube_s{
+  width: 50px;
+  height:50px;
+  border: 1px solid black;
+  border-radius:5px;
+}
+.dots{
+	width:10px;
+	height:10px;
+	background:black;
+	border-radius:100%;
+	position:absolute;
+}
+
+.s_t .dots , .s_f .dots:nth-child(2),.s_b .dots:nth-child(3){
+  margin: 17px;
+}
+.s_l .dots:first-child, .s_f .dots:nth-child(1), .s_r .dots:nth-child(1), .s_b .dots:nth-child(1), .s_d .dots:nth-child(1){
+  margin: 4px;
+}
+.s_l .dots:last-child, .s_f .dots:nth-child(3), .s_r .dots:nth-child(4),.s_b .dots:nth-child(5), .s_d .dots:nth-child(6){
+    margin: 35px 0px 0px 35px;
+}
+.s_r .dots:nth-child(2), .s_b .dots:nth-child(2), .s_d .dots:nth-child(3){
+  margin: 4px 0px 0px 35px;
+}
+.s_r .dots:nth-child(3), .s_b .dots:nth-child(4), .s_d .dots:nth-child(4){
+  margin: 35px 0px 0px 4px;
+}
+.s_d .dots:nth-child(2){
+	margin: 4px 0px 0px 17px;
+}
+.s_d .dots:nth-child(5){
+	margin: 35px 0px 0px 17px;
+}
+.arenaContainer {
+  -webkit-perspective: 800px;
+  -webkit-perspective-origin: 50% 20px;
+  float: left;
+  width: 70%;
+}
+.Arena{
+	width:377px;
+	height:450px;
+	border:1px solid red;
+	transform: rotateX(70deg);
+	box-shadow: 6px 6px 3px #aaa;
+	margin: auto;
+	transform-origin: 50% 50% 0px;
+}
+.step{
+	width:75px;
+	height:75px;
+	border:1px solid black;
+	float:left;
+}
+.dice .s_t{
+  transform: rotateX(90deg);
+  top: -25px;
+}
+.dice .s_b{
+	transform: rotateX(180deg) translateZ(25px);
+}
+.dice .s_l{
+  transform: rotateY(90deg);
+  left: -25px;
+}
+.dice .s_f{
+	transform: translateZ(25px);
+}
+.dice .s_r{
+  transform: rotateY(-90deg);
+  left: 25px;
+}
+.dice .s_d{
+  transform: rotateX(-90deg);
+  top: 25px;
+}
+.p{
+	width:25px;
+	height:25px;
+	background: black;
+}

@@ -1,0 +1,33 @@
+#formDiv{
+    margin-left: 20%;
+}
+#maindiv{
+	padding-top: 1px;
+/*    background-color: #F5F5DC;	*/
+}
+.smtpFieldset{
+	width: 850px ;
+    border-color: #FAA52C;
+}
+fieldset{
+    width: 80% ;
+    border-color: #FAA52C;
+}
+
+input{
+    padding-left: 5px;
+}
+
+button{
+     margin-left: 40%;
+}
+
+#Status{
+font-family: Arial;
+float: left;
+height: 30px;
+width: 100%;
+position: relative;
+top: 0px;
+color: #F00;
+}

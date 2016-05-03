@@ -1,0 +1,54 @@
+	<div class="column_right_grid date_events">
+    	<h3><a href="#" id="slide_prev"><img src="web/images/arrow-left.png" alt="" /></a> Wednesday <a href="#" id="slide_next"><img src="web/images/arrow-right.png" alt="" /></a></h3>
+ 		<ul id="slide" class="event_dates">					            
+	    	<li>26</li>
+	        <li>25</li>
+            <li>24</li>
+            <li>23</li>
+            <li>22</li>
+            <li>21</li>
+            <li>20</li>
+            <li>19</li>
+            <li>18</li>
+            <li>17</li>
+            <li>16</li>
+            <li>15</li>
+            <li>14</li>
+            <li>13</li>
+            <li>12</li>
+            <li>11</li>
+            <li>10</li>
+            <li>9</li>
+            <li>8</li>
+            <li>7</li>
+            <li>6</li>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+            <li>1</li>
+            <li>31</li>
+            <li>30</li>
+            <li>29</li>
+            <li>28</li>
+            <li>27</li>
+        </ul>
+    <div class="button"><a href="#">Add Event</a></div>											 				
+	<script type="text/javascript">
+	    $(function() {						
+	        $('#slide').ulslide({
+	           
+				effect: {
+					type: 'carousel', // slide or fade
+	                axis: 'x',        // x, y
+					showCount:1
+				},
+	            nextButton: '#slide_next',
+	            prevButton: '#slide_prev',
+	            duration: 800,
+	            /*autoslide: 2000,*/
+				easing: 'easeOutBounce'
+	        });
+	    });
+	</script>
+</div>

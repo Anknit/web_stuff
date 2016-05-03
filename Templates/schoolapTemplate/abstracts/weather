@@ -1,0 +1,25 @@
+<div class="weather">
+	<h3><i><img src="web/images/location.png" alt="" /> </i> Cluj-Napoca / Ro</h3>
+    <div class="today_temp">
+    	<div class="temp">
+			<figure>Fri 29/06<span>24<em>o</em></span></figure>
+		</div>
+		<img src="web/images/sun.png" alt="" />
+	</div>
+	<div class="temp_list">
+    	<ul>
+		    <li><a href="#"><span class="day_name">Sat</span>&nbsp; 29/06 
+			<label class="digits">25<em>o</em> <i><img src="web/images/sun_icon1.png" alt="" /></i></label><div class="clear"></div></a></li>
+			<li class="active"><a href="#"><span class="day_name">Sun</span>&nbsp; 30/06 
+			<label class="digits">22<em>o</em> <i><img src="web/images/clouds.png" alt="" /></i></label><div class="clear"></div></a></li>
+			<li><a href="#"><span class="day_name">Mon</span>&nbsp; 01/07 
+			<label class="digits">24<em>o</em> <i><img src="web/images/clouds.png" alt="" /></i></label><div class="clear"></div></a></li>
+			<li><a href="#"><span class="day_name">Tue</span>&nbsp; 02/07 
+			<label class="digits">26<em>o</em> <i><img src="web/images/sun_icon1.png" alt="" /></i></label><div class="clear"></div></a></li>
+			<li><a href="#"><span class="day_name">Wed</span>&nbsp; 03/07 
+			<label class="digits">27<em>o</em> <i><img src="web/images/sun_icon2.png" alt="" /></i></label><div class="clear"></div></a></li>
+			<li><a href="#"><span class="day_name">Thu</span>&nbsp; 04/07
+			<label class="digits">29<em>o</em> <i><img src="web/images/sun_icon2.png" alt="" /></i></label><div class="clear"></div></a></li>
+    	</ul>
+	</div>
+</div>	           

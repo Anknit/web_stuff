@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="google-signin-client_id" content="42338840257-9ll1lip2eqc6dg2p00ntl94njnb39d1r.apps.googleusercontent.com">
+<script src="./../../../js/sso/sso.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+var ssoObj ;
+$(document).ready(function(){
+ssoObj = new sso.app("http://localhost/workinweb/Common/php/sso/php/sso.php");
+
+$("#signup").on("click",function(){
+	email	=	$("#email").val();
+	ssoObj.signup(email);
+});
+
+$("#signin").on("click",function(){
+	email	=	$("#s_email").val();
+	pass	=	$("#s_pass").val();
+	ssoObj.signin(email,pass);
+});
+
+$("#reset").on("click",function(){
+	email	=	$("#r_email").val();
+	ssoObj.reset(email);
+});
+});
+var onSSOResponse	=	function(r)
+{
+	$("#message").html(r);
+}
+
+</script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+Name:<input type="text" id="email" name="email"><br/>
+<button id="signup">signup</button>
+<br/>
+<br/>
+<br/>
+<br/>
+Name:<input type="text" id="s_email" name="s_email"><br/>
+password:<input type="text" id="s_pass" name="s_pass">
+<button id="signin">signin</button>
+<br/>
+<br/>
+<br/>
+<br/>
+Name:<input type="text" id="r_email" name="r_email"><br/>
+<button id="reset">reset</button>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<p id="message"></p>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+digraph "C:/wamp" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2b9e166508d09dde5a99a7da5cdd2c5e {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_2b9e166508d09dde5a99a7da5cdd2c5e.html"];
+    dir_2b9e166508d09dde5a99a7da5cdd2c5e [shape=plaintext label="wamp"];
+    dir_6cec9c0059ae9a8bc4877b04f6d117b9 [shape=box label="www" color="red" fillcolor="white" style="filled" URL="dir_6cec9c0059ae9a8bc4877b04f6d117b9.html"];
+  }
+}

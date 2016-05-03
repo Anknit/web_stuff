@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>HOMERUN</title>
+<link type='text/css' rel='stylesheet' href="./css/bootstrap.css" />
+<link type='text/css' rel='stylesheet' href="./css/cube.css" />
+<link type='text/css' rel='stylesheet' href="./css/homeRun.css" />
+</head>
+<body>
+	<div class="UserInfoDisplay">
+		
+	</div>
+	<div class="GamePlay">
+		<div class="P1Controls playerSection">
+			<button onclick="throwDice(1)">Throw</button>
+			<span class="faceNum"></span>
+		</div>
+		<div class="arenaContainer">
+			<div class="Arena"></div>
+		</div>
+		<div class="P2Controls playerSection">
+			<button onclick="throwDice(2)">Throw</button>
+			<span class="faceNum"></span>
+		</div>
+	</div>
+	<div class="GlobalControlSection">
+	</div>
+	<div class='wrap'>
+		<div class="dice"style="top:-250px;">
+			<div class='cube_s s_t ye'></div>
+			<div class='cube_s s_l ye'></div>
+			<div class='cube_s s_f ye'></div>
+			<div class='cube_s s_r ye'></div>
+			<div class='cube_s s_b ye'></div>
+			<div class='cube_s s_d ye'></div>
+		</div>
+	</div>
+<script type='text/javascript' src='./../jquery.js'></script>
+<script type='text/javascript' src='./js/homeRun.js'></script>
+</body>
+</html>

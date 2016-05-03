@@ -1,0 +1,9 @@
+digraph "C:/wamp/www/yuidoc/php" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ac07840a994d8fbc22467e4a588b5fea {
+    graph [ bgcolor="#ddddee", pencolor="black", label="yuidoc" fontname="Helvetica", fontsize="10", URL="dir_ac07840a994d8fbc22467e4a588b5fea.html"]
+  dir_eb4c7278869537543a12d8124661a37e [shape=box, label="php", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_eb4c7278869537543a12d8124661a37e.html"];
+  }
+}

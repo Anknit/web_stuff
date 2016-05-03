@@ -1,0 +1,9 @@
+<div class="social_network_likes">
+	<ul>
+		<li><a href="#" class="facebook"><i><img src="web/images/facebook_icon.png" alt=""></i> <span>248k</span></a></li>
+		<li><a href="#" class="twitter"><i><img src="web/images/tweets.png" alt=""></i> <span>30k</span></a></li>
+		<li><a href="#" class="googleplus"><i><img src="web/images/google+.png" alt=""></i> <span>124k</span></a></li>
+		<li><a href="#" class="mail"><i><img src="web/images/mail-hover.png" alt=""></i> <span>89k</span></a></li>
+		<div class="clear"></div>
+	</ul>
+</div>

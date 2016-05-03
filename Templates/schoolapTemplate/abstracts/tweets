@@ -1,0 +1,11 @@
+<div class="tweets">
+	<h3><i><img src="web/images/tweets.png" alt="" /> </i> Latest Tweets</h3>		              
+	<div class="tweets_list">
+  		<ul>
+	  		<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore <a href="#">@Neque</a>
+	  		<span>10 minutes ago</span></li>
+	  	    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore eiusmod <a href="#">#Creative Cloud</a>
+	  		<span>2 hours ago</span></li>
+		</ul>
+	</div>
+</div>

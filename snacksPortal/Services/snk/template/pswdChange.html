@@ -1,0 +1,26 @@
+<div class="col-md-8 col-md-offset-2">
+    <div class="form form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-4">Current Password</label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" id="current-pswd" data-required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">New Password</label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" id="new-pswd" data-required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Confirm Password</label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" id="confirm-pswd" data-required/>
+            </div>
+        </div>
+    </div>
+    <div class="text-center col-md-12">
+        <button class="btn btn-primary" type="button" id="change-password" data-ng-click="submitNewPassword()">Submit</button>
+        <div class="alert alert-warning invisible" id="statusArea"></div>
+    </div>
+</div>

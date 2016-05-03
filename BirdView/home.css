@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+#sourceBlock{
+	width:10%;
+	height:100%;
+	overflow:auto;
+	float:left;
+	border: 1px solid #ccc;
+}
+#PageBlock{
+	width:75%;
+	height:100%;
+	overflow:auto;
+	float:left;
+	border: 1px solid #ccc;
+}
+.container_drag{
+	margin: 5px;
+	padding: 5px;
+}
+.main_drag{
+	cursor: move ;
+}
+input.main_drag{
+	cursor: move ;
+}
+div.main_drag{
+	background:#eee;
+	border: 1px solid black;
+}
+#content_div{
+	width:100px;
+	height:60px;
+}
+#content_input{
+	width:100px;
+	height:20px;
+}
+#content_button{
+	width:100px;
+	height:20px;
+}
