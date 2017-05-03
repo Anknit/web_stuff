@@ -16,7 +16,7 @@ html,body,div{
 <div style="width:200px; color:white; background:orange">Current Value is </div>
 <div id="valDiv" style="width:100px; color:white; background:green"></div>
 </div>
-<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="./../jquery.js"></script>
 <script type="text/javascript">
 var Xpos=0, Ypos=300, ctx='', c='', valDiv='' ;
 $(function(){
