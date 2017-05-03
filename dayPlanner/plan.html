@@ -1,335 +1,336 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Day-Planner</title>
-</head>
-<style>
-*{
-	box-sizing:border-box;
-}
-body{
-	overflow:hidden;
-}
-div#path {
-    width: 1200px;
-    height: 1200px;
-    border: 5px solid #ccc;
-    border-radius: 100%;
-    background-color: transparent;
-    margin: 50px auto;
-}
-.segment {
-    width: 50px;
-    height: 50px;
-	margin: 25px 0px;
-    background-color: #fff;
-    float: left;
-    border-radius: 100%;
-    position:absolute;
-    cursor:pointer;
-    border:1px solid #ccc;
-    box-shadow:0px 0px 10px #aaa;
-    transition:all 0.2s ease-in-out;
-}
-.segment.activeHour{
-    background-color: #1ff11f;
-}
-.segment.pastHour{
-    background-color: #fff11f;
-}
-.segment:hover {
-    box-shadow:1px 1px 5px #aaa;
-    color:#fff;
-    background-color:#666
-}
-.segment span{
-	display: inline-block;
-    text-align: center;
-    transform: rotate(90deg);
-    padding: 15px;
-    width: 100%;
-    transform-origin: center;
-    font-size:12px;
-}
-#segmentContainer{
-    transform-origin: 600px 600px;
-    transform: rotate(-90deg);
-    width: 1200px;
-    height: 1200px;
-    margin: -5px;
-}
-#planContainer{
-	width: 750px;
-/*    height: 300px;
-*/    box-shadow: 0px 1px 20px #aaa;
-    margin: -1000px auto;
-    position:relative;
-    z-index:10;
-    transition:all 0.1s ease-in-out;
-}
-div#planTop {
-    width: 100%;
-/*    height: 50px;
-*/    border-bottom: 4px double red;
-    /* border-style: ridge; */
-    display:table;
-}
-.checkPlan {
-    width: 50px;
-	display:table-cell;
-	text-align:center;
-	padding: 0px 10px;
-	vertical-align:middle;
-}
-.planEntry {
-    float: left;
-    width: 100%;
-    border-bottom: 1px solid black;
-}
-div#planBody{
-    display:table;
-}
-div#planBody .textPlan{
-    cursor:url('pencil.png'),default;
-}
-.textPlan{
-    border-left: 4px double red;
-	padding: 10px 0px 10px 0px;
-    text-align: center;
-    font-size: 25px;
-    font-family: Arial serif;
-    margin-left: 50px;
-    outline:none;
-    display:table-cell;
-    width:100%;
-}
-.textPlan textarea {
-    width: 100%;
-    outline: none;
-    padding: 5px;
-    font-size: 20px;
-    border:none;
-    resize:none;
-    cursor: inherit;
-}
-#savePlanButton{
-    position: absolute;
-    z-index: 20;
-    background: #199119;
-    color: white;
-    padding: 5px 20px;
-    font-size: 18px;
-    display: block;
-    margin: 10px 0px 0px -80px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px #aaa;
-    cursor:pointer;
-    transition:all 0.1s ease-in-out;
-}
-#savePlanButton:hover{
-    box-shadow: 5px 5px 20px #aaa;
-}
-</style>
-<body>
-	<div id="path">
-		<div id="segmentContainer">
-			<div class='segment s1' data-time="0"><span>00 AM</span></div>
-			<div class='segment s2' data-time="1"><span>01 AM</span></div>
-			<div class='segment s3' data-time="2"><span>02 AM</span></div>
-			<div class='segment s4' data-time="3"><span>03 AM</span></div>
-			<div class='segment s5' data-time="4"><span>04 AM</span></div>
-			<div class='segment s6' data-time="5"><span>05 AM</span></div>
-			<div class='segment s7' data-time="6"><span>06 AM</span></div>
-			<div class='segment s8' data-time="7"><span>07 AM</span></div>
-			<div class='segment s9' data-time="8"><span>08 AM</span></div>
-			<div class='segment s10' data-time="9"><span>09 AM</span></div>
-			<div class='segment s11' data-time="10"><span>10 AM</span></div>
-			<div class='segment s12' data-time="11"><span>11 AM</span></div>
-			<div class='segment s1' data-time="12"><span>12 PM</span></div>
-			<div class='segment s2' data-time="13"><span>01 PM</span></div>
-			<div class='segment s3' data-time="14"><span>02 PM</span></div>
-			<div class='segment s4' data-time="15"><span>03 PM</span></div>
-			<div class='segment s5' data-time="16"><span>04 PM</span></div>
-			<div class='segment s6' data-time="17"><span>05 PM</span></div>
-			<div class='segment s7' data-time="18"><span>06 PM</span></div>
-			<div class='segment s8' data-time="19"><span>07 PM</span></div>
-			<div class='segment s9' data-time="20"><span>08 PM</span></div>
-			<div class='segment s10' data-time="21"><span>09 PM</span></div>
-			<div class='segment s11' data-time="22"><span>10 PM</span></div>
-			<div class='segment s12' data-time="23"><span>11 PM</span></div>
-		</div>
-		<div id="planContainer">
-			<div id="planTop">
-				<div class="checkPlan">
-						<input type="checkbox" style="visibility:hidden;"/>
-				</div>
-				<div class="textPlan">My Plans for <span id="currentActiveTimePlan"></span>
-				</div>
-				<div id="savePlanButton">Save</div>
-			</div>
-			<div id="planBody">
-				<div class="planEntry">
-					<div class="checkPlan">
-						<input type="checkbox" />
-					</div>
-					<div class="textPlan">
-						<textarea rows="1" placeholder="Write your plan" ></textarea>
-					</div>
-				</div>
-				<div class="planEntry">
-					<div class="checkPlan">
-						<input type="checkbox" />
-					</div>
-					<div class="textPlan">
-						<textarea rows="1" placeholder="Write your plan" ></textarea>
-					</div>
-				</div>
-				<div class="planEntry">
-					<div class="checkPlan">
-						<input type="checkbox" />
-					</div>
-					<div class="textPlan">
-						<textarea rows="1" placeholder="Write your plan" ></textarea>
-					</div>
-				</div>
-				<div class="planEntry">
-					<div class="checkPlan">
-						<input type="checkbox" />
-					</div>
-					<div class="textPlan">
-						<textarea rows="1" placeholder="Write your plan" ></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript" src="../jquery.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			var trX,trY;
-			var segments	=	$('.segment');
-			var offsetX		=	-30;
-			var offsetY		=	-50;
-			var pathWidth	=	1200;
-			var pathHeight	=	1200;
-			var a= new Date();
-			var hrsPast	=	a.getHours();
-			var segmentDefaultRotate	=	(-hrsPast*12)-140;
-			var textDefaultRotate		=	(hrsPast*12)+140;
-			$('#segmentContainer').css('transform','rotate('+segmentDefaultRotate+'deg)');
-			$('.segment span').css('transform','rotate('+textDefaultRotate+'deg)');
-			$('.segment[data-time="'+hrsPast+'"]').addClass('activeHour');
-			$('#currentActiveTimePlan').text($('.segment.activeHour').text());
-			setInterval(setCurrentRotation,60*1000);
-			for(var i=0;i<segments.length;i++){
-				trX	=	600+600*Math.cos(2*Math.PI*i/segments.length);
-				trY	=	600+600*Math.sin(2*Math.PI*i/segments.length);
-				trX	=	trX+offsetX;
-				trY	=	trY+offsetY;
-				segments.eq(i).css('transform','translate3D('+trX+'px,'+trY+'px,0px)');
-				if(segments.eq(i).attr('data-time')<hrsPast){
-					segments.eq(i).addClass('pastHour');
-				}
-			}
-			$('.textPlan textarea').on('keypress',function(event){
-				$('#planContainer').css('box-shadow','0px 1px 1px #aaa');
-				if(event.charCode == 13 && $(this).val() != ''){
-					$(this).attr('rows',(parseInt($(this).attr('rows'))+1).toString());
-				}
-			});
-			$('.textPlan textarea').on('keyup',function(event){
-				$('#planContainer').css('box-shadow','0px 1px 20px #aaa');
-			});
-			$('.checkPlan input').on('change',function(){
-				if($(this).is(':checked')){
-					$(this).closest('.planEntry').find('textarea').css('text-decoration','line-through');
-				}
-				else{
-					$(this).closest('.planEntry').find('textarea').css('text-decoration','none');
-				}
-			});
-			var mulS,mulT;
-			$(window).bind('mousewheel DOMMouseScroll', function(event){
-			    if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
-			      mulS	=	1;
-			      mulT	=	-1;
-			    }
-			    else {
-			      mulS	=	-1;
-			      mulT	=	1;
-			    }
-				segmentDefaultRotate	=	segmentDefaultRotate+((mulS)*12);
-				textDefaultRotate		=	textDefaultRotate+((mulT)*12);
-				$('#segmentContainer').css('transform','rotate('+segmentDefaultRotate+'deg)');
-				$('.segment span').css('transform','rotate('+textDefaultRotate+'deg)');
-			});
-		});
-		var setCurrentRotation	=	function(){
-			var a= new Date();
-			var hrsPast	=	a.getHours();
-			if($('.segment[data-time="'+hrsPast+'"]').hasClass('activeHour')){
-				return;
-			}
-			$('.segment[data-time="'+hrsPast+'"]').addClass('activeHour');
-			$('.segment[data-time="'+(hrsPast-1)+'"]').addClass('pastHour').removeClass('activeHour');
-			$('#currentActiveTimePlan').text($('.segment.activeHour').text());
-			segmentDefaultRotate	=	(-hrsPast*12)-140;
-			textDefaultRotate		=	(hrsPast*12)+140;
-			$('#segmentContainer').css('transform','rotate('+segmentDefaultRotate+'deg)');
-			$('.segment span').css('transform','rotate('+textDefaultRotate+'deg)');
-		};
-		var storeDataLocal	=	function(dataObject){
-			if(typeof(Storage) !== "undefined") {
-				if(dataObject == "undefined")
-					dataObject 	=	{};
-				localStorage.planD	=	JSON.stringify(dataObject);
-			}
-		};
-		var getDataLocal	=	function(LocalObjectName){
-			var dataObject ;
-			if(typeof(Storage) !== "undefined") {
-				if(!localStorage[LocalObjectName])
-					dataObject 	=	JSON.stringify({});
-				else{
-					dataObject 	=	localStorage[LocalObjectName];
-				}
-			}
-			return JSON.parse(dataObject);
-		};
-		var showStoredData	=	function(hourToExtract){
-			var dataObject			=	getDataLocal('planD');
-			var requiredHourObject	=	dataObject[hourToExtract];
-			if(requiredHourObject){
-				var requiredHourTask	=	requiredHourObject['tasks'];
-				if(requiredHourTask.length > 0){
-					var singleTaskObject;
-					for(var taskCount=0;taskCount<requiredHourTask.length;taskCount++){
-						singleTaskObject	=	requiredHourTask[taskCount];
-						$('.planEntry').eq(taskCount).find('.textPlan textarea').val(singleTaskObject['text']);
-						if(singleTaskObject['state'] == 1){
-							$('.planEntry').eq(taskCount).find('.checkPlan input').prop('selected','selected');
-							$('.planEntry').eq(taskCount).find('.textPlan textarea').css('text-decoration','line-through');
-						}
-					}
-				}
-			}
-			else{
-			}
-			
-		};
-		var savePlanData	=	function(hourToSave){
-			
-		};
-		var modifyDataObject	=	function(){
-			var dataObject	=	getDataLocal('planD');
-			var currentHourObject	=	dataObject[$('.segment.activeHour').attr('data-time')];
-			if(currentHourObject){
-				
-			}
-			else{
-			}
-		};
-	</script>
-</body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Day-Planner</title>
+        <style>
+        *{
+            box-sizing:border-box;
+        }
+        body{
+            overflow:hidden;
+        }
+        div#path {
+            width: 1200px;
+            height: 1200px;
+            border: 5px solid #ccc;
+            border-radius: 100%;
+            background-color: transparent;
+            margin: 50px auto;
+        }
+        .segment {
+            width: 50px;
+            height: 50px;
+            margin: 25px 0px;
+            background-color: #fff;
+            float: left;
+            border-radius: 100%;
+            position:absolute;
+            cursor:pointer;
+            border:1px solid #ccc;
+            box-shadow:0px 0px 10px #aaa;
+            transition:all 0.2s ease-in-out;
+        }
+        .segment.activeHour{
+            background-color: #1ff11f;
+        }
+        .segment.pastHour{
+            background-color: #fff11f;
+        }
+        .segment:hover {
+            box-shadow:1px 1px 5px #aaa;
+            color:#fff;
+            background-color:#666
+        }
+        .segment span{
+            display: inline-block;
+            text-align: center;
+            transform: rotate(90deg);
+            padding: 15px;
+            width: 100%;
+            transform-origin: center;
+            font-size:12px;
+        }
+        #segmentContainer{
+            transform-origin: 600px 600px;
+            transform: rotate(-90deg);
+            width: 1200px;
+            height: 1200px;
+            margin: -5px;
+        }
+        #planContainer{
+            width: 750px;
+        /*    height: 300px;
+        */    box-shadow: 0px 1px 20px #aaa;
+            margin: -1000px auto;
+            position:relative;
+            z-index:10;
+            transition:all 0.1s ease-in-out;
+        }
+        div#planTop {
+            width: 100%;
+        /*    height: 50px;
+        */    border-bottom: 4px double red;
+            /* border-style: ridge; */
+            display:table;
+        }
+        .checkPlan {
+            width: 50px;
+            display:table-cell;
+            text-align:center;
+            padding: 0px 10px;
+            vertical-align:middle;
+        }
+        .planEntry {
+            float: left;
+            width: 100%;
+            border-bottom: 1px solid black;
+        }
+        div#planBody{
+            display:table;
+        }
+        div#planBody .textPlan{
+            cursor:url('pencil.png'),default;
+        }
+        .textPlan{
+            border-left: 4px double red;
+            padding: 10px 0px 10px 0px;
+            text-align: center;
+            font-size: 25px;
+            font-family: Arial serif;
+            margin-left: 50px;
+            outline:none;
+            display:table-cell;
+            width:100%;
+        }
+        .textPlan textarea {
+            width: 100%;
+            outline: none;
+            padding: 5px;
+            font-size: 20px;
+            border:none;
+            resize:none;
+            cursor: inherit;
+        }
+        #savePlanButton{
+            position: absolute;
+            z-index: 20;
+            background: #199119;
+            color: white;
+            padding: 5px 20px;
+            font-size: 18px;
+            display: block;
+            margin: 10px 0px 0px -80px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px #aaa;
+            cursor:pointer;
+            transition:all 0.1s ease-in-out;
+        }
+        #savePlanButton:hover{
+            box-shadow: 5px 5px 20px #aaa;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="path">
+            <div id="segmentContainer">
+                <div class='segment s1' data-time="0"><span>00 AM</span></div>
+                <div class='segment s2' data-time="1"><span>01 AM</span></div>
+                <div class='segment s3' data-time="2"><span>02 AM</span></div>
+                <div class='segment s4' data-time="3"><span>03 AM</span></div>
+                <div class='segment s5' data-time="4"><span>04 AM</span></div>
+                <div class='segment s6' data-time="5"><span>05 AM</span></div>
+                <div class='segment s7' data-time="6"><span>06 AM</span></div>
+                <div class='segment s8' data-time="7"><span>07 AM</span></div>
+                <div class='segment s9' data-time="8"><span>08 AM</span></div>
+                <div class='segment s10' data-time="9"><span>09 AM</span></div>
+                <div class='segment s11' data-time="10"><span>10 AM</span></div>
+                <div class='segment s12' data-time="11"><span>11 AM</span></div>
+                <div class='segment s1' data-time="12"><span>12 PM</span></div>
+                <div class='segment s2' data-time="13"><span>01 PM</span></div>
+                <div class='segment s3' data-time="14"><span>02 PM</span></div>
+                <div class='segment s4' data-time="15"><span>03 PM</span></div>
+                <div class='segment s5' data-time="16"><span>04 PM</span></div>
+                <div class='segment s6' data-time="17"><span>05 PM</span></div>
+                <div class='segment s7' data-time="18"><span>06 PM</span></div>
+                <div class='segment s8' data-time="19"><span>07 PM</span></div>
+                <div class='segment s9' data-time="20"><span>08 PM</span></div>
+                <div class='segment s10' data-time="21"><span>09 PM</span></div>
+                <div class='segment s11' data-time="22"><span>10 PM</span></div>
+                <div class='segment s12' data-time="23"><span>11 PM</span></div>
+            </div>
+            <div id="planContainer">
+                <div id="planTop">
+                    <div class="checkPlan">
+                            <input type="checkbox" style="visibility:hidden;"/>
+                    </div>
+                    <div class="textPlan">My Plans for <span id="currentActiveTimePlan"></span>
+                    </div>
+                    <div id="savePlanButton">Save</div>
+                </div>
+                <div id="planBody">
+                    <div class="planEntry">
+                        <div class="checkPlan">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="textPlan">
+                            <textarea rows="1" placeholder="Write your plan" ></textarea>
+                        </div>
+                    </div>
+                    <div class="planEntry">
+                        <div class="checkPlan">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="textPlan">
+                            <textarea rows="1" placeholder="Write your plan" ></textarea>
+                        </div>
+                    </div>
+                    <div class="planEntry">
+                        <div class="checkPlan">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="textPlan">
+                            <textarea rows="1" placeholder="Write your plan" ></textarea>
+                        </div>
+                    </div>
+                    <div class="planEntry">
+                        <div class="checkPlan">
+                            <input type="checkbox" />
+                        </div>
+                        <div class="textPlan">
+                            <textarea rows="1" placeholder="Write your plan" ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../jquery.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var trX,trY;
+                var segments	=	$('.segment');
+                var offsetX		=	-30;
+                var offsetY		=	-50;
+                var pathWidth	=	1200;
+                var pathHeight	=	1200;
+                var a= new Date();
+                var hrsPast	=	a.getHours();
+                var segmentDefaultRotate	=	(-hrsPast*12)-140;
+                var textDefaultRotate		=	(hrsPast*12)+140;
+                $('#segmentContainer').css('transform','rotate('+segmentDefaultRotate+'deg)');
+                $('.segment span').css('transform','rotate('+textDefaultRotate+'deg)');
+                $('.segment[data-time="'+hrsPast+'"]').addClass('activeHour');
+                $('#currentActiveTimePlan').text($('.segment.activeHour').text());
+                setInterval(setCurrentRotation,60*1000);
+                for(var i=0;i<segments.length;i++){
+                    trX	=	600+600*Math.cos(2*Math.PI*i/segments.length);
+                    trY	=	600+600*Math.sin(2*Math.PI*i/segments.length);
+                    trX	=	trX+offsetX;
+                    trY	=	trY+offsetY;
+                    segments.eq(i).css('transform','translate3D('+trX+'px,'+trY+'px,0px)');
+                    if(segments.eq(i).attr('data-time')<hrsPast){
+                        segments.eq(i).addClass('pastHour');
+                    }
+                }
+                $('.textPlan textarea').on('keypress',function(event){
+                    $('#planContainer').css('box-shadow','0px 1px 1px #aaa');
+                    if(event.charCode == 13 && $(this).val() != ''){
+                        $(this).attr('rows',(parseInt($(this).attr('rows'))+1).toString());
+                    }
+                });
+                $('.textPlan textarea').on('keyup',function(event){
+                    $('#planContainer').css('box-shadow','0px 1px 20px #aaa');
+                });
+                $('.checkPlan input').on('change',function(){
+                    if($(this).is(':checked')){
+                        $(this).closest('.planEntry').find('textarea').css('text-decoration','line-through');
+                    }
+                    else{
+                        $(this).closest('.planEntry').find('textarea').css('text-decoration','none');
+                    }
+                });
+                var mulS,mulT;
+                $(window).bind('mousewheel DOMMouseScroll', function(event){
+                    if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+                      mulS	=	1;
+                      mulT	=	-1;
+                    }
+                    else {
+                      mulS	=	-1;
+                      mulT	=	1;
+                    }
+                    segmentDefaultRotate	=	segmentDefaultRotate+((mulS)*12);
+                    textDefaultRotate		=	textDefaultRotate+((mulT)*12);
+                    $('#segmentContainer').css('transform','rotate('+segmentDefaultRotate+'deg)');
+                    $('.segment span').css('transform','rotate('+textDefaultRotate+'deg)');
+                });
+            });
+            var setCurrentRotation	=	function(){
+                var a= new Date();
+                var hrsPast	=	a.getHours();
+                if($('.segment[data-time="'+hrsPast+'"]').hasClass('activeHour')){
+                    return;
+                }
+                $('.segment[data-time="'+hrsPast+'"]').addClass('activeHour');
+                $('.segment[data-time="'+(hrsPast-1)+'"]').addClass('pastHour').removeClass('activeHour');
+                $('#currentActiveTimePlan').text($('.segment.activeHour').text());
+                segmentDefaultRotate	=	(-hrsPast*12)-140;
+                textDefaultRotate		=	(hrsPast*12)+140;
+                $('#segmentContainer').css('transform','rotate('+segmentDefaultRotate+'deg)');
+                $('.segment span').css('transform','rotate('+textDefaultRotate+'deg)');
+            };
+            var storeDataLocal	=	function(dataObject){
+                if(typeof(Storage) !== "undefined") {
+                    if(dataObject == "undefined")
+                        dataObject 	=	{};
+                    localStorage.planD	=	JSON.stringify(dataObject);
+                }
+            };
+            var getDataLocal	=	function(LocalObjectName){
+                var dataObject ;
+                if(typeof(Storage) !== "undefined") {
+                    if(!localStorage[LocalObjectName])
+                        dataObject 	=	JSON.stringify({});
+                    else{
+                        dataObject 	=	localStorage[LocalObjectName];
+                    }
+                }
+                return JSON.parse(dataObject);
+            };
+            var showStoredData	=	function(hourToExtract){
+                var dataObject			=	getDataLocal('planD');
+                var requiredHourObject	=	dataObject[hourToExtract];
+                if(requiredHourObject){
+                    var requiredHourTask	=	requiredHourObject['tasks'];
+                    if(requiredHourTask.length > 0){
+                        var singleTaskObject;
+                        for(var taskCount=0;taskCount<requiredHourTask.length;taskCount++){
+                            singleTaskObject	=	requiredHourTask[taskCount];
+                            $('.planEntry').eq(taskCount).find('.textPlan textarea').val(singleTaskObject['text']);
+                            if(singleTaskObject['state'] == 1){
+                                $('.planEntry').eq(taskCount).find('.checkPlan input').prop('selected','selected');
+                                $('.planEntry').eq(taskCount).find('.textPlan textarea').css('text-decoration','line-through');
+                            }
+                        }
+                    }
+                }
+                else{
+                }
+
+            };
+            var savePlanData	=	function(hourToSave){
+
+            };
+            var modifyDataObject	=	function(){
+                var dataObject	=	getDataLocal('planD');
+                var currentHourObject	=	dataObject[$('.segment.activeHour').attr('data-time')];
+                if(currentHourObject){
+
+                }
+                else{
+                }
+            };
+        </script>
+    </body>
 </html>
